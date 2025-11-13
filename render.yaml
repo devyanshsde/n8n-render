@@ -28,20 +28,35 @@ services:
         fromDatabase:
           name: n8n-postgres
           property: password
+
+      # FORCE BASIC AUTH (working)
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
       - key: N8N_BASIC_AUTH_USER
         value: admin
       - key: N8N_BASIC_AUTH_PASSWORD
         generateValue: true
+
+      # 100% REQUIRED — DISABLE USER MANAGEMENT
       - key: N8N_USER_MANAGEMENT_DISABLED
         value: "true"
-      - key: N8N_API_KEY
-        generateValue: true
+
+      # REQUIRED
       - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+      - key: N8N_API_KEY
         generateValue: true
       - key: GENERIC_TIMEZONE
         value: UTC
+
+      # RECOMMENDED (silences warnings)
+      - key: N8N_RUNNERS_ENABLED
+        value: "true"
+      - key: N8N_BLOCK_ENV_ACCESS_IN_NODE
+        value: "false"
+      - key: N8N_GIT_NODE_DISABLE_BARE_REPOS
+        value: "true"
+
 databases:
   - name: n8n-postgres
     plan: free
