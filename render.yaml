@@ -34,12 +34,14 @@ services:
         value: admin
       - key: N8N_BASIC_AUTH_PASSWORD
         generateValue: true
+      - key: N8N_USER_MANAGEMENT_DISABLED
+        value: "true"
       - key: N8N_API_KEY
+        generateValue: true
+      - key: N8N_ENCRYPTION_KEY
         generateValue: true
       - key: GENERIC_TIMEZONE
         value: UTC
-      - key: N8N_ENCRYPTION_KEY
-        generateValue: true
 databases:
   - name: n8n-postgres
     plan: free
